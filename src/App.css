@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+.App{
+  padding: 32px;
+  background-color: #ccc;
 }
 
 .App-logo {
@@ -28,11 +29,29 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-color{
+  color: #888;
 }
+
+.header-style{
+      text-align: center;
+      position: relative;
+      background-color:#888;
+      padding: 32px;
+      align-items: center;
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+.cell {
+  flex-basis: calc(25% - 16px);
+  min-height: 60px;
+  background: whitesmoke;
+  box-sizing: content-box;
+  margin: 8px;
+  align-items: center;
+  display: flex;
+  }
