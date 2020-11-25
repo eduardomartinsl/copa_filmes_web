@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function MovieCell({titulo, ano}) {
-  console.log(titulo)
   return (
     <div className="cell" >
       <div
