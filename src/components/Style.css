@@ -1,0 +1,44 @@
+.divider{
+  margin: 16px;
+  width: 80%;
+  height: 2px;
+  background-color: #ccc;
+  align-self: center;
+}
+
+.cell {
+  flex-basis: calc(25% - 16px);
+  min-height: 60px;
+  background: whitesmoke;
+  box-sizing: content-box;
+  margin: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.header-style{
+  text-align: center;
+  position: relative;
+  background-color:#888;
+  padding: 32px;
+  align-items: center;
+}
+
+.movie-result-cell{
+  display: flex;
+  flex-direction: row;
+  min-width: 40px;
+  background-color: whitesmoke;
+  margin-top: 16px;
+  align-items: center;
+}
+
+.movie-result-cell-position{
+  display: flex;
+  background-color: #888;
+  padding: 32px;
+}
+
+.movie-result-cell-title{
+  margin-left: 16px;
+}

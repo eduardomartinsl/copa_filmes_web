@@ -1,0 +1,14 @@
+.table {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.App{
+  padding: 32px;
+  background-color: #ccc;
+}
+
+.column-results{
+  display: flex;
+  flex-direction: column;
+}

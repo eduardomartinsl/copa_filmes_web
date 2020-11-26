@@ -4,14 +4,11 @@ import MovieCell from '../components/MovieCell'
 import Header from '../components/Header'
 import strings from '../resources/strings'
 import filmes from '../resources/filmes'
+import './Style.css'
 
 export default function ListaFilmesPage() {
   return (
     <div className="App">
-
-      <Header
-        titulo={strings.fase_selecao.titulo}
-        descricao={strings.fase_selecao.descricao}/>
 
       <div style={{ justifyContent: 'space-between', display: 'flex', flex: 1, alignItems: 'center', margin: 8 }}>
 

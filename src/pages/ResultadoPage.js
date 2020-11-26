@@ -1,14 +1,15 @@
 import React from 'react'
 
-import Header from '../components/Header'
-import strings from '../resources/strings'
+import MovieResultCell from '../components/MovieResultCell'
+import './Style.css'
 
-export default function ResultadoPage(){
-  return(
+export default function ResultadoPage() {
+  return (
     <div className="App">
-      <Header 
-        titulo={strings.resultado_final.titulo} 
-        descricao={strings.resultado_final.descricao}/>
+      <div className='column-results'>
+        <MovieResultCell nome={'filme 1'} posicao={1}  />
+        <MovieResultCell nome={'filme 1'} posicao={1}  />
+      </div>
     </div>
   )
 }
