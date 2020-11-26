@@ -1,12 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import MovieCell from '../components/MovieCell'
-import Header from '../components/Header'
-import strings from '../resources/strings'
 import filmes from '../resources/filmes'
+import strings from '../resources/strings'
 import './Style.css'
 
-export default function ListaFilmesPage() {
+export default function ListaFilmesPage({setTitulo, setDescricao}) {
+
+  setTitulo(strings.fase_selecao.titulo)
+  setDescricao(strings.fase_selecao.descricao)
+
+  const [filmesSelecionados, setFilmesSelecionados] = useState([])
+
   return (
     <div className="App">
 
@@ -14,7 +19,7 @@ export default function ListaFilmesPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column' }} >
           <text>Selecionados:</text>
-          <text>0 de 8 filmes</text>
+        <text>{filmesSelecionados.length} de 8 filmes</text>
         </div>
 
         <button style={{ padding: 16 }} >
@@ -25,7 +30,11 @@ export default function ListaFilmesPage() {
 
       <div className="table">
         {filmes.map(filme =>
-          <MovieCell titulo={filme.titulo} ano={filme.ano} />
+
+          <MovieCell 
+            filme={filme} 
+            filmesSelecionados={filmesSelecionados} 
+            setFilmesSelecionados={setFilmesSelecionados} />
         )}
       </div>
       

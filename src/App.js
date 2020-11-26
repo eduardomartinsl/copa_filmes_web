@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
 
 import ListaFilmesPage from './pages/ListaFilmesPage'
-import ResultadoPage from './pages/ResultadoPage'
 import Header from './components/Header'
-import strings from './resources/strings'
 
 function App() {
 
@@ -12,9 +10,9 @@ function App() {
 
   return (
     <>
-      <Header titulo={strings.fase_selecao.titulo} descricao={strings.fase_selecao.descricao}/>
-      <ListaFilmesPage/>
-      {/* <ResultadoPage/> */}
+      <Header titulo={titulo} descricao={descricao}/>
+      <ListaFilmesPage setTitulo={setTitulo} setDescricao={setDescricao} />
+      {/* <ResultadoPage setTitulo={setTitulo} setDescricao={setDescricao}  /> */}
     </>
   );
 }
