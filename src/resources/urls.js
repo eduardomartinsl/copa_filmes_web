@@ -4,7 +4,7 @@ let FILMES_BASE_URL = 'http://copafilmes.azurewebsites.net/api/filmes'
 const URLS ={
   //aqui vão os endpoints no seguinte modelo
   ENDPOINT: (parametro1, parametro2) => `${parametro1}&${parametro2}`,
-  ENVIA_FILMES: (filmes) => `${filmes}`
+  CALCULA_FILMES_VENCEDORES: () => "/filmes-vencedores"
 }
 
 export default URLS

@@ -3,16 +3,18 @@ import { useCallback, useState } from 'react'
 import { http } from '../resources/http'
 import URLS, { FILMES_BASE_URL } from '../resources/urls'
 
-export default function useEnviaFilmesSelecionados({ filmesSelecionados }) {
+export default function useEnviaFilmesSelecionados() {
 
   const [loading, setLoading] = useState(false)
 
   const enviaFilmesSelecionados = useCallback(
-    async () => {
+    async (params) => {
+      console.log(params)
       setLoading(true)
-      const url = URLS.ENVIA_FILMES(filmesSelecionados)
+      const url = URLS.CALCULA_FILMES_VENCEDORES()
       try {
-        const {data} = await http.post(url)
+        const { data } = await http.post(url, data={params})
+        return data
       } catch (e) {
 
       } finally {
@@ -22,5 +24,5 @@ export default function useEnviaFilmesSelecionados({ filmesSelecionados }) {
     []
   )
 
-  return { loading, enviaFilmesSelecionados }
+  return { enviaFilmesSelecionados, loading }
 }

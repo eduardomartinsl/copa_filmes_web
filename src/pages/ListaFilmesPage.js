@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import MovieCell from '../components/MovieCell'
-import filmes from '../resources/filmes'
 import strings from '../resources/strings'
 import { useHistory } from 'react-router-dom'
 import useBuscaFilmes from '../services/useBuscaFilmes'
+import filmes from '../resources/filmes'
 
 import './Style.css'
+import useEnviaFilmesSelecionados from '../services/useEnviaFilmesSelecionados'
 
 export default function ListaFilmesPage({ setTitulo, setDescricao }) {
 
@@ -14,22 +15,16 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
   setDescricao(strings.fase_selecao.descricao)
 
   const [filmesSelecionados, setFilmesSelecionados] = useState([])
-  const { listaFilmes, Loading } = useBuscaFilmes()
+  const {isLoading, enviaFilmesSelecionados} = useEnviaFilmesSelecionados()
 
-  const history = useHistory();
-  function navegaParaResultados() {
-    if(filmesSelecionados.length != 8){
-      
-    }
+  // const { listaFilmes, Loading } = useBuscaFilmes()
+
+  function enviarResultados() {
     (filmesSelecionados.length <= 7 ?
       alert("Por favor, escolha 8 filmes")
       :
-      history.push({
-        pathname: '/resultado',
-        state: { filmesSelecionados }
-      })
+      enviaFilmesSelecionados(filmesSelecionados)
     )
-    console.log(filmesSelecionados)
   }
 
   return (
@@ -40,14 +35,14 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
 
           <text style={{color: filmesSelecionados.length <= 8 ?  null : 'red' }} >{filmesSelecionados.length} de 8 filmes</text>
         </div>
-        <button style={{ padding: 16 }} onClick={navegaParaResultados}>
+        <button style={{ padding: 16 }} onClick={enviarResultados}>
           Gerar meu campeonato
         </button>
       </div>
 
       <div className="table">
         {
-          listaFilmes.map(filme =>
+          filmes.map(filme =>
               <MovieCell
                 filme={filme}
                 filmesSelecionados={filmesSelecionados}

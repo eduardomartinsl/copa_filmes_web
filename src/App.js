@@ -10,7 +10,6 @@ function App() {
   const [titulo, setTitulo] = useState("")
   const [descricao, setDescricao] = useState("")
 
-
   return (
     <Router>
       <Header titulo={titulo} descricao={descricao} />
