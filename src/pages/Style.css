@@ -12,3 +12,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.movies-count-row{
+  justify-content: space-between;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin: 8px;
+}

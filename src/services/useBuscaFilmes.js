@@ -1,28 +1,30 @@
-import {useCallback, useState} from 'react'
+import { useState } from 'react'
 
 import { http } from '../resources/http'
-import {FILMES_BASE_URL} from '../resources/urls'
+import { FILMES_BASE_URL } from '../resources/urls'
 
-export default function useBuscaFilmes(){
-  
-  const[listaFilmes, setListaFilmes] = useState([])
-  const[loading, setLoading] = useState(false)
+export default function useBuscaFilmes() {
 
-  const carregaFilmes = useCallback(
+  const [listaFilmes, setListaFilmes] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useState(
     async () => {
       setLoading(true)
       const url = FILMES_BASE_URL
-      try{
-        const {data} = await http.get(url)
+      try {
+        const { data } = await http.get(url)
+        debugger
+        console.log(`Resultado da requisição: ${JSON.stringify(data)}`)
         setListaFilmes(data)
-      }catch(e){
+      } catch (e) {
 
-      }finally{
+      } finally {
         setLoading(false)
       }
     },
-    []
+    [listaFilmes]
   )
 
-  return {listaFilmes, loading, carregaFilmes}
+  return { listaFilmes, loading }
 }
