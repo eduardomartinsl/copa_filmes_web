@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 import { http } from '../resources/http'
-import URLS, { FILMES_BASE_URL } from '../resources/urls'
+import URLS from '../resources/urls'
 
 export default function useEnviaFilmesSelecionados() {
 

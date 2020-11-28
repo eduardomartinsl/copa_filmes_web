@@ -4,10 +4,9 @@ import MovieCell from '../components/MovieCell'
 import strings from '../resources/strings'
 import { useHistory } from 'react-router-dom'
 import useBuscaFilmes from '../services/useBuscaFilmes'
-import filmes from '../resources/filmes'
-
-import './Style.css'
+import filmesLocais from '../resources/filmes'
 import useEnviaFilmesSelecionados from '../services/useEnviaFilmesSelecionados'
+import './Style.css'
 
 export default function ListaFilmesPage({ setTitulo, setDescricao }) {
 
@@ -15,9 +14,9 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
   setDescricao(strings.fase_selecao.descricao)
 
   const [filmesSelecionados, setFilmesSelecionados] = useState([])
-  const {isLoading, enviaFilmesSelecionados} = useEnviaFilmesSelecionados()
+  const { enviaFilmesSelecionados, isLoading } = useEnviaFilmesSelecionados()
 
-  // const { listaFilmes, Loading } = useBuscaFilmes()
+  const { listaFilmes, Loading } = useBuscaFilmes()
 
   function enviarResultados() {
     (filmesSelecionados.length <= 7 ?
@@ -33,23 +32,20 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
         <div style={{ display: 'flex', flexDirection: 'column' }} >
           <text>Selecionados:</text>
 
-          <text style={{color: filmesSelecionados.length <= 8 ?  null : 'red' }} >{filmesSelecionados.length} de 8 filmes</text>
+          <text style={{ color: filmesSelecionados.length <= 8 ? null : 'red' }} >{filmesSelecionados.length} de 8 filmes</text>
         </div>
         <button style={{ padding: 16 }} onClick={enviarResultados}>
           Gerar meu campeonato
         </button>
       </div>
-
       <div className="table">
-        {
-          filmes.map(filme =>
-              <MovieCell
-                filme={filme}
-                filmesSelecionados={filmesSelecionados}
-                setFilmesSelecionados={setFilmesSelecionados} />
+          {filmesLocais.map(filme =>
+            <MovieCell
+              filme={filme}
+              filmesSelecionados={filmesSelecionados}
+              setFilmesSelecionados={setFilmesSelecionados} />
           )}
       </div>
-
     </div>
   );
 }
