@@ -6,6 +6,7 @@ import URLS from '../resources/urls'
 export default function useEnviaFilmesSelecionados() {
 
   const [loading, setLoading] = useState(false)
+  const [filmeVencedor, setFilmeVencedor] = useState()
 
   const enviaFilmesSelecionados = useCallback(
     async (params) => {
@@ -13,10 +14,10 @@ export default function useEnviaFilmesSelecionados() {
       setLoading(true)
       const url = URLS.CALCULA_FILMES_VENCEDORES()
       try {
-        const { data } = await http.post(url, data={params})
-        return data
+        const { data } = await http.post(url, params)
+        setFilmeVencedor(data)
       } catch (e) {
-
+        console.log(e)
       } finally {
         setLoading(false)
       }
@@ -24,5 +25,5 @@ export default function useEnviaFilmesSelecionados() {
     []
   )
 
-  return { enviaFilmesSelecionados, loading }
+  return { enviaFilmesSelecionados, filmeVencedor, loading }
 }

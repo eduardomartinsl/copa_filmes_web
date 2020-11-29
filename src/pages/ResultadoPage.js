@@ -9,9 +9,10 @@ export default function ResultadoPage({setTitulo, setDescricao}) {
 
   setTitulo(strings.resultado_final.titulo)
   setDescricao(strings.resultado_final.descricao)
-  let {filmesSelecionados} = useParams();
 
-  console.log(filmesSelecionados)
+  let {filmeVencedor} = useParams();
+
+  console.log(filmeVencedor)
 
   return (
     <div className="App">

@@ -15,12 +15,12 @@ function App() {
       <Header titulo={titulo} descricao={descricao} />
 
       <Switch>
-      <Route exact path="/">
-        <ListaFilmesPage setTitulo={setTitulo} setDescricao={setDescricao} />
-      </Route>
-      <Route path={'/resultado'} >
-        <ResultadoPage setTitulo={setTitulo} setDescricao={setDescricao}  />
-      </Route>
+        <Route exact path="/">
+          <ListaFilmesPage setTitulo={setTitulo} setDescricao={setDescricao} />
+        </Route>
+        <Route path={'/resultado'} >
+          <ResultadoPage setTitulo={setTitulo} setDescricao={setDescricao} />
+        </Route>
       </Switch>
 
     </Router>

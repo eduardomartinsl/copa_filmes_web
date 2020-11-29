@@ -14,9 +14,18 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
   setDescricao(strings.fase_selecao.descricao)
 
   const [filmesSelecionados, setFilmesSelecionados] = useState([])
-  const { enviaFilmesSelecionados, isLoading } = useEnviaFilmesSelecionados()
+  const { enviaFilmesSelecionados, filmeVencedor, isLoading } = useEnviaFilmesSelecionados()
+  const history = useHistory();
 
-  const { listaFilmes, Loading } = useBuscaFilmes()
+  useEffect(() => {
+    if(!isLoading && filmeVencedor){
+      alert(JSON.stringify(filmeVencedor))
+      history.push({
+        pathname: '/resultado',
+        state: { filmeVencedor }
+      })
+    }
+  }, [filmeVencedor])
 
   function enviarResultados() {
     (filmesSelecionados.length <= 7 ?

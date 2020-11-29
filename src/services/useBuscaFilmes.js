@@ -14,7 +14,6 @@ export default function useBuscaFilmes() {
       const url = FILMES_BASE_URL
       try {
         const { data } = await http.get(url)
-        debugger
         console.log(`Resultado da requisição: ${JSON.stringify(data)}`)
         setListaFilmes(data)
       } catch (e) {
