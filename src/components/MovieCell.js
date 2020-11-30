@@ -7,7 +7,7 @@ export default function MovieCell({ filme, filmesSelecionados, setFilmesSelecion
       onClick={() => {
         setFilmesSelecionados(
           items =>
-            items.includes(filme.id) ? items.filter(x => x !== filme) : items.concat(filme))
+            items.includes(filme) ? items.filter(x => x !== filme) : items.concat(filme))
       }}>
       <div style={{ margin: 16 }}>
         <input

@@ -2,23 +2,23 @@ import React from 'react'
 
 import MovieResultCell from '../components/MovieResultCell'
 import strings from '../resources/strings'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './Style.css'
 
-export default function ResultadoPage({setTitulo, setDescricao}) {
+export default function ResultadoPage({ setTitulo, setDescricao, filmesVencedores }) {
 
   setTitulo(strings.resultado_final.titulo)
   setDescricao(strings.resultado_final.descricao)
 
-  let {filmeVencedor} = useParams();
-
-  console.log(filmeVencedor)
+  console.log(`filme vencedor: ${JSON.stringify(filmesVencedores)}`)
 
   return (
     <div className="App">
       <div className='column-results'>
-        <MovieResultCell nome={'filme 1'} posicao={1}  />
-        <MovieResultCell nome={'filme 2'} posicao={1}  />
+        {/* {filmesVencedores.map(filme => { */}
+          {/* <MovieResultCell filme={filme} /> */}
+          {/* <MovieResultCell filme={filme} /> */}
+        {/* })} */}
       </div>
     </div>
   )

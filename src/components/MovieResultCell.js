@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function MovieResultCell({ posicao, nome }) {
+export default function MovieResultCell({ filme }) {
   return (
 
     <div className='movie-result-cell'>
 
       <div className='movie-result-cell-position' >
-        <text>{posicao}</text>
+        <text>{filme.posicao}</text>
       </div>
-      <div className='movie-result-cell-title'>{nome}</div>
+      <div className='movie-result-cell-title'>{filme.Titulo}</div>
     </div>
   )
 }

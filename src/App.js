@@ -9,6 +9,7 @@ function App() {
 
   const [titulo, setTitulo] = useState("")
   const [descricao, setDescricao] = useState("")
+  const [filmeVencedor, setFilmeVencedor] = useState()
 
   return (
     <Router>
@@ -16,10 +17,10 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <ListaFilmesPage setTitulo={setTitulo} setDescricao={setDescricao} />
+          <ListaFilmesPage setTitulo={setTitulo} setDescricao={setDescricao} setFilmeVencedor={setFilmeVencedor} />
         </Route>
         <Route path={'/resultado'} >
-          <ResultadoPage setTitulo={setTitulo} setDescricao={setDescricao} />
+          <ResultadoPage setTitulo={setTitulo} setDescricao={setDescricao} filmeVencedor={filmeVencedor} />
         </Route>
       </Switch>
 

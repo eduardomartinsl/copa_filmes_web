@@ -8,32 +8,23 @@ import filmesLocais from '../resources/filmes'
 import useEnviaFilmesSelecionados from '../services/useEnviaFilmesSelecionados'
 import './Style.css'
 
-export default function ListaFilmesPage({ setTitulo, setDescricao }) {
+export default function ListaFilmesPage({ setTitulo, setDescricao, setFilmesVencedores }) {
 
   setTitulo(strings.fase_selecao.titulo)
   setDescricao(strings.fase_selecao.descricao)
 
   const [filmesSelecionados, setFilmesSelecionados] = useState([])
-  const { enviaFilmesSelecionados, filmeVencedor, isLoading } = useEnviaFilmesSelecionados()
+  const { enviaFilmesSelecionados, filmesVencedores, isLoading } = useEnviaFilmesSelecionados()
   const history = useHistory();
 
   useEffect(() => {
-    if(!isLoading && filmeVencedor){
-      alert(JSON.stringify(filmeVencedor))
+    if(!isLoading && filmesVencedores){
+      setFilmesVencedores(filmesVencedores)
       history.push({
-        pathname: '/resultado',
-        state: { filmeVencedor }
+        pathname: '/resultado'
       })
     }
-  }, [filmeVencedor])
-
-  function enviarResultados() {
-    (filmesSelecionados.length <= 7 ?
-      alert("Por favor, escolha 8 filmes")
-      :
-      enviaFilmesSelecionados(filmesSelecionados)
-    )
-  }
+  }, [filmesVencedores])
 
   return (
     <div className="App">
@@ -57,5 +48,16 @@ export default function ListaFilmesPage({ setTitulo, setDescricao }) {
       </div>
     </div>
   );
+
+  function enviarResultados() {
+    (filmesSelecionados.length <= 7 ?
+      alert("Por favor, escolha 8 filmes")
+      :
+      enviaFilmesSelecionados(filmesSelecionados)
+    )
+    if (filmesSelecionados.length > 8){
+      alert("Por favor, escolha somente 8 filmes")
+    }
+  }
 }
 
