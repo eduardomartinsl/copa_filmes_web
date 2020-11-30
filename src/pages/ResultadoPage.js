@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import MovieResultCell from '../components/MovieResultCell'
 import strings from '../resources/strings'
-import { useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './Style.css'
 
 export default function ResultadoPage({ setTitulo, setDescricao, filmesVencedores }) {
 
   setTitulo(strings.resultado_final.titulo)
   setDescricao(strings.resultado_final.descricao)
+  
+  const [filmesFinalistas, setFilmesFinalistas] = useState(filmesVencedores)
+  const history = useHistory();
 
-  console.log(`filme vencedor: ${JSON.stringify(filmesVencedores)}`)
+  useEffect(() => {
+    console.log(`filmesVencedores: ${filmesVencedores}`)
+    console.log(`filmesFinalistas ${filmesFinalistas}`)
+    if(!filmesFinalistas){
+      history.push({
+        pathname: '/'
+      })
+    }
+  }, [filmesFinalistas])
+  
 
   return (
     <div className="App">
       <div className='column-results'>
-        {/* {filmesVencedores.map(filme => { */}
-          {/* <MovieResultCell filme={filme} /> */}
-          {/* <MovieResultCell filme={filme} /> */}
-        {/* })} */}
+        {filmesFinalistas.map( filme => <MovieResultCell filme={filme} /> )}
       </div>
     </div>
   )
