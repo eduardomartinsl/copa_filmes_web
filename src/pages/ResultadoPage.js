@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import MovieResultCell from '../components/MovieResultCell'
 import strings from '../resources/strings'
-import { useHistory } from 'react-router-dom'
 import './Style.css'
 
 export default function ResultadoPage({ setTitulo, setDescricao, filmesVencedores }) {
@@ -11,18 +10,6 @@ export default function ResultadoPage({ setTitulo, setDescricao, filmesVencedore
   setDescricao(strings.resultado_final.descricao)
   
   const [filmesFinalistas, setFilmesFinalistas] = useState(filmesVencedores)
-  const history = useHistory();
-
-  useEffect(() => {
-    console.log(`filmesVencedores: ${filmesVencedores}`)
-    console.log(`filmesFinalistas ${filmesFinalistas}`)
-    if(!filmesFinalistas){
-      history.push({
-        pathname: '/'
-      })
-    }
-  }, [filmesFinalistas])
-  
 
   return (
     <div className="App">

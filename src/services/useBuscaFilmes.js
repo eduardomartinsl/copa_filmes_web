@@ -6,11 +6,9 @@ import { FILMES_BASE_URL } from '../resources/urls'
 export default function useBuscaFilmes() {
 
   const [listaFilmes, setListaFilmes] = useState([])
-  const [loading, setLoading] = useState(false)
 
   useState(
     async () => {
-      setLoading(true)
       const url = FILMES_BASE_URL
       try {
         const { data } = await http.get(url)
@@ -18,12 +16,10 @@ export default function useBuscaFilmes() {
         setListaFilmes(data)
       } catch (e) {
 
-      } finally {
-        setLoading(false)
       }
     },
     [listaFilmes]
   )
 
-  return { listaFilmes, loading }
+  return { listaFilmes }
 }

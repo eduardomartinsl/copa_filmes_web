@@ -15,7 +15,6 @@ export default function useEnviaFilmesSelecionados() {
       const url = URLS.CALCULA_FILMES_VENCEDORES()
       try {
         const { data } = await http.post(url, params)
-        console.log(`filmes Vencedores: ${JSON.stringify(data)}`)
         setFilmesVencedores(data['result'])
       } catch (e) {
         if(e['message'] == 'Network Error'){

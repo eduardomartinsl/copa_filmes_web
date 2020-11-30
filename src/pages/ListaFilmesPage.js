@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import MovieCell from '../components/MovieCell'
 import strings from '../resources/strings'
@@ -15,6 +15,10 @@ export default function ListaFilmesPage({ setTitulo, setDescricao, setFilmesVenc
 
   const [filmesSelecionados, setFilmesSelecionados] = useState([])
   const { enviaFilmesSelecionados, filmesVencedores, isLoading } = useEnviaFilmesSelecionados()
+  const {listaFilmes} = useBuscaFilmes();
+
+  console.log(listaFilmes)
+
   const history = useHistory();
 
   useEffect(() => {
