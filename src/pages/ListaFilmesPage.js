@@ -43,6 +43,7 @@ export default function ListaFilmesPage({ setTitulo, setDescricao, setFilmesVenc
         </button>
       </div>
       <div className="table">
+        {/* estou usando uma lista de filmes locais */}
           {filmesLocais.map(filme =>
             <MovieCell
               filme={filme}
